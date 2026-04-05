@@ -1,0 +1,111 @@
+body {
+    color: white;
+    font-family: "Rubik", sans-serif;
+    font-style: normal;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    /* Фон */
+    background-image: url('https://img.freepik.com/free-vector/neon-quiz-show-frame-brick-wall_1308-181066.jpg?semt=ais_hybrid&w=740&q=80');
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+/* Контейнер для всього квізу, щоб текст було краще видно на фоні */
+.app-container {
+    background: rgba(0, 0, 0, 0.7); /* Темна прозора підкладка */
+    padding: 30px;
+    border-radius: 20px;
+    border: 2px solid #ff00ff; /* Неонова рамка */
+    box-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
+    text-align: center;
+    max-width: 450px;
+    width: 90%;
+}
+
+.answers-container {
+    display: grid; /* Сітка краще тримає форму */
+    grid-template-columns: 1fr 1fr; 
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.answer-btn {
+    /* Виправив ширину: 10px було замало для тексту */
+    width: 100%; 
+    padding: 15px 10px;
+    border-radius: 10px;
+    border: 2px solid #00ffff;
+    background: transparent;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    transition: 0.3s;
+}
+
+.answer-btn:hover {
+    background: rgba(0, 255, 255, 0.2);
+    box-shadow: 0 0 10px #00ffff;
+}
+
+.start-btn, #restart-btn {
+    padding: 15px 30px;
+    border-radius: 10px;
+    border: none;
+    background-color: #ff00ff;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    box-shadow: 0 0 15px #ff00ff;
+}
+
+.hide {
+    display: none;
+}
+
+/* Статуси відповідей */
+.correct {
+    background-color: #28a745 !important;
+    border-color: #28a745 !important;
+}
+
+.wrong {
+    background-color: #dc3545 !important;
+    border-color: #dc3545 !important;
+}
+#start-btn {
+    padding: 20px 50px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #fff;
+    background: transparent;
+    border: 4px solid #ff00ff;
+    border-radius: 50px; /* Овальна форма */
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    
+    /* Ефект світіння */
+    box-shadow: 0 0 10px #ff00ff, inset 0 0 10px #ff00ff;
+    text-shadow: 0 0 10px #ff00ff;
+    
+    transition: 0.3s;
+    animation: pulsate 1.5s infinite alternate; /* Пульсація */
+}
+
+#start-btn:hover {
+    background: #ff00ff;
+    color: #000;
+    box-shadow: 0 0 40px #ff00ff;
+}
+
+@keyframes pulsate {
+    100% {
+        box-shadow: 0 0 20px #ff00ff, inset 0 0 15px #ff00ff;
+    }
+}
