@@ -1,32 +1,36 @@
 <!DOCTYPE html>
 <html lang="uk">
-    <link href="style.css">
-    <script src="script.js">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neon Quiz</title>
     
+    <link rel="stylesheet" href="style.css">
+</head>
 <body>
 
-<div class="app-container">
-    <div id="start-screen" class="screen">
-     <h1>Розпочати квіз</h1>
-     <button id="start-btn">🚀 ПЕРЕВІРИТИ ЗНАННЯ</button>
-    </div>
+    <div class="app-container">
+        <div id="start-screen" class="screen">
+            <h1>Neon Quiz</h1>
+            <button id="start-btn" class="start-btn">Почати</button>
+        </div>
 
-    <div id="quiz-screen" class="screen hide">
-        <div class="header">
-        <span id="timer">Час: 15</span>
-        <span id="score-display">Бали: 0</span>
-        </div> 
-        <h2 id="question-text">Питання</h2>
-        <div id="answers-container">
+        <div id="quiz-screen" class="screen hide">
+            <div class="header">
+                <span id="timer">Час: 15</span>
+                <span id="score-display">Бали: 0</span>
+            </div>
+            <h2 id="question-text">Питання</h2>
+            <div id="answers-container" class="answers-container"></div>
+        </div>
+
+        <div id="result-screen" class="screen hide">
+            <h2>Фініш!</h2>
+            <p id="result-text"></p>
+            <button id="restart-btn">Ще раз</button>
         </div>
     </div>
 
-    <div id="result-screen" class="screen hide">
-    <h2>Квіз завершено!</h2>
-    <p id="result-text"></p> 
-    <button id="restart-btn">Спробувати ще</button>
-    </div>
-</div>
-
+    <script src="script.js"></script>
 </body>
 </html>
