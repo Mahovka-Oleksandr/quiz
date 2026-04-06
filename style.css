@@ -5,9 +5,8 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
     margin: 0;
-    /* Фон */
     background-image: url('https://img.freepik.com/free-vector/neon-quiz-show-frame-brick-wall_1308-181066.jpg?semt=ais_hybrid&w=740&q=80');
     background-attachment: fixed;
     background-repeat: no-repeat;
@@ -15,28 +14,90 @@ body {
     background-position: center;
 }
 
-/* Контейнер для всього квізу, щоб текст було краще видно на фоні */
 .app-container {
-    background: rgba(0, 0, 0, 0.7); /* Темна прозора підкладка */
     padding: 30px;
     border-radius: 20px;
-    border: 2px solid #ff00ff; /* Неонова рамка */
-    box-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
     text-align: center;
-    max-width: 450px;
+    max-width: 700px;
     width: 90%;
 }
 
-.answers-container {
-    display: grid; /* Сітка краще тримає форму */
-    grid-template-columns: 1fr 1fr; 
+.screen h1,
+.screen h2 {
+    margin-top: 0;
+}
+
+.subtitle {
+    color: #d9d9d9;
+    margin-bottom: 25px;
+}
+
+/* СІТКА ВИБОРУ КВІЗІВ */
+.quiz-select-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 18px;
+    margin-top: 20px;
+}
+
+.quiz-card {
+    padding:10px 5px;
+    border-radius: 16px;
+    border: 2px solid #00ffff;
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.quiz-card:hover {
+    transform: translateY(-4px) scale(1.02);
+    background: rgba(0, 255, 255, 0.12);
+    box-shadow: 0 0 16px #00ffff;
+}
+
+.quiz-icon {
+    font-size: 2rem;
+}
+
+.quiz-title {
+    font-size: 1.1rem;
+}
+
+/* ХЕДЕР КВІЗУ */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.header span {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(0, 255, 255, 0.45);
+    padding: 8px 12px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 255, 255, 0.15);
+}
+
+/* ВІДПОВІДІ */
+#answers-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     gap: 15px;
     margin-top: 20px;
 }
 
 .answer-btn {
-    /* Виправив ширину: 10px було замало для тексту */
-    width: 100%; 
+    width: 100%;
     padding: 15px 10px;
     border-radius: 10px;
     border: 2px solid #00ffff;
@@ -52,7 +113,14 @@ body {
     box-shadow: 0 0 10px #00ffff;
 }
 
-.start-btn, #restart-btn {
+.answer-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.95;
+}
+
+/* КНОПКИ */
+#restart-btn,
+#back-to-menu-btn {
     padding: 15px 30px;
     border-radius: 10px;
     border: none;
@@ -62,50 +130,56 @@ body {
     cursor: pointer;
     text-transform: uppercase;
     box-shadow: 0 0 15px #ff00ff;
+    transition: 0.3s;
+}
+
+#restart-btn:hover,
+#back-to-menu-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px #ff00ff;
+}
+
+.result-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 20px;
 }
 
 .hide {
     display: none;
 }
 
-/* Статуси відповідей */
+/* СТАТУСИ ВІДПОВІДЕЙ */
 .correct {
     background-color: #28a745 !important;
     border-color: #28a745 !important;
+    box-shadow: 0 0 15px #28a745;
 }
 
 .wrong {
     background-color: #dc3545 !important;
     border-color: #dc3545 !important;
-}
-#start-btn {
-    padding: 20px 50px;
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: #fff;
-    background: transparent;
-    border: 4px solid #ff00ff;
-    border-radius: 50px; /* Овальна форма */
-    cursor: pointer;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    
-    /* Ефект світіння */
-    box-shadow: 0 0 10px #ff00ff, inset 0 0 10px #ff00ff;
-    text-shadow: 0 0 10px #ff00ff;
-    
-    transition: 0.3s;
-    animation: pulsate 1.5s infinite alternate; /* Пульсація */
+    box-shadow: 0 0 15px #dc3545;
 }
 
-#start-btn:hover {
-    background: #ff00ff;
-    color: #000;
-    box-shadow: 0 0 40px #ff00ff;
+/* АНІМАЦІЯ БАЛІВ */
+#score-display {
+    transition: transform 0.2s ease;
 }
 
-@keyframes pulsate {
-    100% {
-        box-shadow: 0 0 20px #ff00ff, inset 0 0 15px #ff00ff;
+@media (max-width: 600px) {
+    .quiz-select-grid,
+    #answers-container {
+        grid-template-columns: 1fr;
+    }
+
+    .app-container {
+        padding: 20px;
+    }
+
+    .header {
+        justify-content: center;
     }
 }
