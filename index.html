@@ -3,35 +3,78 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Neon Quiz</title>
-    
+    <title>Квіз</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-    <div class="app-container">
-        <div id="start-screen" class="screen">
-           <h1 class="neon-title">НЕОНОВИЙ КВІЗ ПО ГЕОГРАФІЇ</h1>
+<div class="app-container">
 
-            <button id="start-btn" class="start-btn">Почати</button>
-        </div>
+    <!-- ЕКРАН ВИБОРУ КВІЗУ -->
+    <div id="start-screen" class="screen">
+        <h1>Оберіть квіз</h1>
+        <p class="subtitle">Вибери тему, яку хочеш пройти</p>
 
-        <div id="quiz-screen" class="screen hide">
-            <div class="header">
-                <span id="timer">Час: 15</span>
-                <span id="score-display">Бали: 0</span>
-            </div>
-            <h2 id="question-text">Питання</h2>
-            <div id="answers-container" class="answers-container"></div>
-        </div>
+        <div class="quiz-select-grid">
+            <button class="quiz-card" data-quiz="geography">
+                <span class="quiz-icon">🌍</span>
+                <span class="quiz-title">Географія</span>
+            </button>
 
-        <div id="result-screen" class="screen hide">
-            <h2>Фініш!</h2>
-            <p id="result-text"></p>
-            <button id="restart-btn">Ще раз</button>
+            <button class="quiz-card" data-quiz="history">
+                <span class="quiz-icon">🏛️</span>
+                <span class="quiz-title">Історія</span>
+            </button>
+
+            <button class="quiz-card" data-quiz="science">
+                <span class="quiz-icon">🧪</span>
+                <span class="quiz-title">Наука</span>
+            </button>
+
+            <button class="quiz-card" data-quiz="movies">
+                <span class="quiz-icon">🎬</span>
+                <span class="quiz-title">Кіно</span>
+            </button>
+
+            <button class="quiz-card" data-quiz="cars">
+                <span class="quiz-icon">🚗</span>
+                <span class="quiz-title">Автомобілі</span>
+            </button>
+
+            <button class="quiz-card" data-quiz="electronics">
+                <span class="quiz-icon">📱</span>
+                <span class="quiz-title">Електроніка</span>
+            </button>
+            
+           
         </div>
     </div>
 
-    <script src="script.js"></script>
+    <!-- ЕКРАН КВІЗУ -->
+    <div id="quiz-screen" class="screen hide">
+        <div class="header">
+            <span id="quiz-title-display">Тема: Географія</span>
+            <span id="timer">Час: 15</span>
+            <span id="score-display">Бали: 0</span>
+        </div>
+
+        <h2 id="question-text">Питання</h2>
+        <div id="answers-container"></div>
+    </div>
+
+    <!-- ЕКРАН РЕЗУЛЬТАТУ -->
+    <div id="result-screen" class="screen hide">
+        <h2>Квіз завершено!</h2>
+        <p id="result-text"></p>
+
+        <div class="result-buttons">
+            <button id="restart-btn">Спробувати ще</button>
+            <button id="back-to-menu-btn">До вибору квізів</button>
+        </div>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
 </body>
 </html>
